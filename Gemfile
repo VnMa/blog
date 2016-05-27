@@ -33,7 +33,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # gem 'capistrano-rails', group: :development
 gem 'bootstrap', '~> 4.0.0.alpha3'
 gem 'redcarpet'
-gem 'rails_12factor', group: 'production' 
+gem 'rails_12factor', group: :production
 
 
 group :development, :test do
@@ -49,3 +49,5 @@ group :development do
   gem 'spring'
 end
 
+ruby "2.3.0"
+gem 'puma'
