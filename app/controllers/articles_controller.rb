@@ -13,7 +13,6 @@ class ArticlesController < ApplicationController
   # GET /articles/1.json
   def show
     @article.view += 1
-    @comments = @article.comments
     @article.save
   end
 
