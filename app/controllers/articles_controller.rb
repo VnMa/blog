@@ -4,13 +4,17 @@ class ArticlesController < ApplicationController
   # GET /articles
   # GET /articles.json
   def index
-    @articles = Article.all
+    #@articles = Article.all
+    @articles = Article.search(params[:search]).order('articles.created_at DESC')
     @markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML)
   end
 
   # GET /articles/1
   # GET /articles/1.json
   def show
+    @article.view += 1
+    @comments = @article.comments
+    @article.save
   end
 
   # GET /articles/new
@@ -72,4 +76,4 @@ class ArticlesController < ApplicationController
     def article_params
       params.require(:article).permit(:title, :body)
     end
-end
+  end
