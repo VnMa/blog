@@ -5,6 +5,12 @@
 
 <h3> My first Rails Application for CoderSchool!</h3>
 
+<div id="tag_cloud">
+ <em> Cloud tag list: 
+  <% tag_cloud Article.tag_counts, %w[s m l] do |tag, css_class| %>
+    <%= link_to tag.name, tag_path(tag.name), class: css_class %>
+  <% end %></em>
+</div>
 <fieldset class="form-group">
 <%= form_tag(articles_path, :method => "get", id: "search-form") do %>
 <%= text_field_tag :search, params[:search], placeholder: "Search article title" %>

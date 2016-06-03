@@ -15,3 +15,6 @@ Article.create([{ title: 'About the app creator', body: '### Profile
 	* Coding is fun
 	* Coderschool is great
 	* Here\'s the link to more [Documentation on Markdown](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet) * ![Animal](https://placeimg.com/640/480/animals)'}])
+
+a = Article.first
+a.comments.create!([{content: 'This is my first comment'}, {content: 'Another comment'}])

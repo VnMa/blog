@@ -1,14 +1,30 @@
 <p id="notice"><%= notice %></p>
+<div class="card">
+	<div class="card-block">
+		<h4 class="card-title"> <%= @article.title %> </h4>
+		<p class="card-text"><%= @markdown.render(@article.body).html_safe %></p>  
+	</div>
+	<ul class="list-group list-group-flush">
+		<li class="list-group-item">Tags: <%= raw @article.tag_list.map { |t| link_to t, tag_path(t) }.join(', ') %>	</li>
+	</ul>
+	<ul class="list-group list-group-flush">
+		<li class="list-group-item"><strong>Comments</strong>
 
-<p>
-  <strong>Title:</strong>
-  <%= @article.title %>
-</p>
+			<% unless @article.comments.empty? %>
+			<%= render @article.comments %>
+			<% end %></li>
+		</ul>
+		<ul class="list-group list-group-flush">
+			<li class="list-group-item">
+				<strong> Add a comment</strong>
+				<%= render 'comments/form' %>
+			</li>
+		</ul>
+	</div>
 
-<p>
-  <strong>Body:</strong>
-  <%= @article.body %>
-</p>
 
-<%= link_to 'Edit', edit_article_path(@article) %> |
-<%= link_to 'Back', articles_path %>
+
+
+
+	<%= link_to 'Edit', edit_article_path(@article) %> |
+	<%= link_to 'Back', articles_path %>

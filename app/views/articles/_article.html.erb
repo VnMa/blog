@@ -7,7 +7,17 @@
         <h4 class="card-title"><%= link_to article.title, article_path(article), :action =>  :show %></h4>
         <p class="card-text"><%= @markdown.render(article.body).html_safe %></p>  
 
-        <h5 class="card-title"> Total views: <%= article.view %></h5>
+        <em> Tags: <%= raw article.tag_list.map { |t| link_to t, tag_path(t) }.join(', ') %></em>
+        <br/>
+        <em> Total views: <%= article.view %></em>
+
+        <br/>
+
+
+        <% unless article.comments.empty? %>
+        <strong>Comments </strong>
+        <%= render article.comments %>
+        <% end %>
         
       </div>
       <div class="class-footer">
@@ -16,6 +26,7 @@
         
         
       </div>
+      
       <div class="class-footer">
       </div>
     </div>
