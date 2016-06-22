@@ -13,8 +13,8 @@
 
         <br/>
 
-
         <% unless article.comments.empty? %>
+        <%= article.comments.size.inspect %>
         <strong>Comments </strong>
         <%= render article.comments %>
         <% end %>

@@ -20,8 +20,11 @@ class ArticlesController < ApplicationController
   # GET /articles/1.json
   def show
     @article.view += 1
-    @article.save
+    @comments = @article.comments
+    # @cmt = @article.comments.build
     @markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML)
+
+    @article.save
   end
 
   # GET /articles/new

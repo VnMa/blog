@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
+ruby "2.3.0"
 gem 'rails', '4.2.6'
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 0.15'
@@ -36,6 +37,12 @@ gem 'redcarpet'
 gem 'acts-as-taggable-on', '~> 3.4'
 gem 'rails_12factor', group: :production
 
+gem 'bower-rails'
+gem 'faker'
+#gem 'angularjs-rails'
+#gem "angular-rails-templates"
+#gem "sprockets", "~> 2.0"
+
 
 source 'https://rails-assets.org' do
   gem 'rails-assets-tether', '>= 1.1.0'
@@ -44,6 +51,9 @@ end
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
+  #gem "rspec-rails", '~> 3.0'
+  gem "rspec-rails", '~> 3.4'
+
 end
 
 group :development do
@@ -54,5 +64,4 @@ group :development do
   gem 'spring'
 end
 
-ruby "2.3.0"
 gem 'puma'

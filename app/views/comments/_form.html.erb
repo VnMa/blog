@@ -1,13 +1,26 @@
 <%= form_for([@article, @article.comments.build]) do |f| %>
-  <p>
-    <%= f.label :commenter %><br>
-    <%= f.text_field :commenter %>
-  </p>
-  <p>
-    <%= f.label :content %><br>
-    <%= f.text_area :content %>
-  </p>
-  <p>
-    <%= f.submit %>
-  </p>
+
+<% if @cmt != nil && @cmt.errors.any? %>
+<div id="error_explanation">
+	<h2><%= pluralize(@cmt.errors.count, "error") %> </h2>
+
+	<ul>
+		<% @cmt.errors.full_messages.each do |message| %>
+		<li><%= message %></li>
+		<% end %>
+	</ul>
+</div>
+<% end %>
+
+<p>
+	<%= f.label :commenter %><br>
+	<%= f.text_field :commenter %>
+</p>
+<p>
+	<%= f.label :content %><br>
+	<%= f.text_area :content %>
+</p>
+<p>
+	<%= f.submit %>
+</p>
 <% end %>

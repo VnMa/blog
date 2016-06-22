@@ -4,12 +4,19 @@ class CommentsController < ApplicationController
   # GET /comments
   # GET /comments.json
   def index
+    # @article = Article.find(params[:article_id])
+    # @comments = @article.comments
     @comments = Comment.all
+
   end
 
   # GET /comments/1
   # GET /comments/1.json
   def show
+    # @article = Article.find(params[:article_id])
+    # @cmt = @article.comments.build
+    # @markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML)
+
   end
 
   # GET /comments/new
@@ -24,15 +31,29 @@ class CommentsController < ApplicationController
   # POST /comments
   # POST /comments.json
 
-   def create
+  def create
+    @markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML)
     @article = Article.find(params[:article_id])
-    @comment = @article.comments.create(comment_params)
-    redirect_to article_path(@article)
+    
+    @cmt = @article.comments.create(comment_params)
+    
+    if @cmt.save      
+      redirect_to article_path(@article)
+    else
+      render 'articles/show'
+    end
+    #redirect_to article_path(@article)
+
+    # @cmt = @article.comments.create(comment_params)
+    
+
+   
+    
   end
- 
+
 
   # def create
-    
+
 
   #   @comment = Comment.new(comment_params)
 
@@ -80,4 +101,4 @@ class CommentsController < ApplicationController
     def comment_params
       params.require(:comment).permit(:commenter, :content)
     end
-end
+  end

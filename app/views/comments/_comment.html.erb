@@ -1,16 +1,18 @@
 <div> 
 	<ul class="list-group list-group-flush">
+		<% if comment.valid? %>
 		<li class="list-group-item"><span> <strong>
 			<%= comment.commenter %> </strong> says: </span>
 			<span > <%= comment.content %></span>
 			<span >
-				<em><small>- Posted <%= time_ago_in_words(comment.created_at) %> ago.<%= link_to 'Destroy Comment', [comment.article, comment],
-				method: :delete,
-				data: { confirm: 'Are you sure?' } %>
+				
+				<em><small> - Posted <%= time_ago_in_words(comment.created_at) unless comment.created_at.blank? %> ago.<%= link_to 'Destroy Comment', [comment.article, comment], method: :delete ,
+					data: { confirm: 'Are you sure?' } unless comment.blank? %>
 				</small> </em>
 			</span></li>
 			<p>
 
 			</p>
+			<% end %>
 		</ul>
 	</div>	
